@@ -56,11 +56,11 @@ O Loyalty Card é um sistema que permite empresas oferecerem programas de fideli
 ## Conteúdo da Documentação
 
 - [Guia de Início Rápido](getting-started/quick-start.md)
-- [Arquitetura do Sistema](architecture/index.md)
-  - [Registros de Decisões de Arquitetura (ADRs)](architecture/adrs/index.md)
+- [Arquitetura do Sistema](architecture/)
+  - [Registros de Decisões de Arquitetura (ADRs)](architecture/adrs/)
 - [API Reference](api/reference.md)
 - [Guia do Usuário](user-guide/introduction.md)
-- [Propostas de Mudanças (RFCs)](rfcs/index.md)
+- [Propostas de Mudanças (RFCs)](rfcs/)
 - [FAQ](faq/common-questions.md)
 
 ## Contribuindo com o Projeto
