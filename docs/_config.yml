@@ -1,0 +1,18 @@
+remote_theme: pages-themes/cayman@v0.2.0
+plugins:
+  - jekyll-remote-theme
+  - jekyll-relative-links
+  - jekyll-seo-tag
+
+title: Loyalty Card Documentation
+description: Documentação técnica e arquitetural do sistema Loyalty Card
+show_downloads: false
+
+# Navegação personalizada
+navbar:
+  - title: Home
+    url: /
+  - title: Arquitetura
+    url: /architecture
+  - title: APIs
+    url: /api-flows
