@@ -27,11 +27,20 @@ plugins:
   - jekyll-relative-links
   - jekyll-seo-tag
 
-# Navegação personalizada
-navbar:
+# Navegação personalizada (transformada em sidebar)
+sidebar:
   - title: Home
     url: /
   - title: Arquitetura
     url: /architecture
+    children:
+      - title: Visão Geral
+        url: /architecture/overview
+      - title: ADRs
+        url: /architecture/adrs
   - title: APIs
     url: /api-flows
+  - title: Guia do Usuário
+    url: /user-guide
+  - title: RFCs
+    url: /rfcs

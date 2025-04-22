@@ -10,31 +10,52 @@
 
 {% seo %}
     <link rel="stylesheet" href="{{ "/assets/css/style.css?v=" | append: site.github.build_revision | relative_url }}">
+    <link rel="stylesheet" href="{{ "/assets/css/custom.css" | relative_url }}">
     {% include head-custom.html %}
   </head>
   <body>
-    <a id="skip-to-content" href="#content">Skip to the content.</a>
-
     <header class="page-header" role="banner">
       <h1 class="project-name">{{ page.title | default: site.title | default: site.github.repository_name }}</h1>
       <h2 class="project-tagline">{{ page.description | default: site.description | default: site.github.project_tagline }}</h2>
-      {% if site.navbar %}
-        {% for item in site.navbar %}
-          <a href="{{ item.url | relative_url }}" class="btn">{{ item.title }}</a>
-        {% endfor %}
-      {% endif %}
     </header>
 
-    <main id="content" class="main-content" role="main">
-      {{ content }}
+    <div class="main-wrapper">
+      <!-- Sidebar navigation -->
+      <div class="sidebar">
+        <div class="sidebar-content">
+          {% if site.sidebar %}
+            <ul class="sidebar-nav">
+              {% for item in site.sidebar %}
+                <li class="sidebar-item {% if page.url == item.url %}active{% endif %}">
+                  <a href="{{ item.url | relative_url }}" class="sidebar-link">{{ item.title }}</a>
+                  {% if item.children %}
+                    <ul class="sidebar-subnav">
+                      {% for child in item.children %}
+                        <li class="sidebar-subitem {% if page.url == child.url %}active{% endif %}">
+                          <a href="{{ child.url | relative_url }}" class="sidebar-sublink">{{ child.title }}</a>
+                        </li>
+                      {% endfor %}
+                    </ul>
+                  {% endif %}
+                </li>
+              {% endfor %}
+            </ul>
+          {% endif %}
+        </div>
+      </div>
 
-      <footer class="site-footer">
-        <span class="site-footer-owner">
-          <a href="{{ site.github.repository_url }}">{{ site.github.repository_name }}</a> é mantido por 
-          <a href="{{ site.github.owner_url }}">{{ site.github.owner_name }}</a>.
-        </span>
-      </footer>
-    </main>
+      <!-- Main content -->
+      <main id="content" class="main-content" role="main">
+        {{ content }}
+
+        <footer class="site-footer">
+          <span class="site-footer-owner">
+            <a href="{{ site.github.repository_url }}">{{ site.github.repository_name }}</a> é mantido por 
+            <a href="{{ site.github.owner_url }}">{{ site.github.owner_name }}</a>.
+          </span>
+        </footer>
+      </main>
+    </div>
     
     <!-- Adicionar script do Mermaid -->
     <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
@@ -49,6 +70,14 @@
         
         // Processa todos os diagramas
         mermaid.init(undefined, document.querySelectorAll('.language-mermaid'));
+
+        // Toggle para sidebar em dispositivos móveis
+        const sidebarToggle = document.querySelector('.sidebar-toggle');
+        if (sidebarToggle) {
+          sidebarToggle.addEventListener('click', function() {
+            document.body.classList.toggle('sidebar-open');
+          });
+        }
       });
     </script>
   </body>
