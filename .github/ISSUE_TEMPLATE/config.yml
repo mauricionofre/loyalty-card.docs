@@ -1,0 +1,24 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Documentação do Projeto
+    url: https://github.com/mauricio/loyalty-card/loyalty-card.docs/README.md
+    about: Consulte a documentação do projeto antes de criar uma issue.
+
+# Configuração dos templates
+templates:
+  - name: Epic
+    about: Para grandes iniciativas que contêm múltiplas features
+    filename: epic.md
+    labels: [epic]
+  - name: Feature
+    about: Solicitar uma nova funcionalidade
+    filename: feature.md
+    labels: [feature]
+  - name: Task
+    about: Tarefa técnica específica
+    filename: task.md
+    labels: [task]
+  - name: Bug
+    about: Reportar um problema ou erro
+    filename: bug.md
+    labels: [bug]
