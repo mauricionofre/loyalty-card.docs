@@ -44,3 +44,33 @@ graph TD
 | BFF        | Node.js/Express | Containeres em Azure |
 | APIs       | ASP.NET Core | Kubernetes em Azure |
 | Banco de Dados | PostgreSQL | Azure Database |
+
+# Loyalty Card - Documentação
+
+Bem-vindo à documentação do projeto Loyalty Card. Esta documentação fornece informações detalhadas sobre o sistema de cartão de fidelidade.
+
+## Sobre o Projeto
+
+O Loyalty Card é um sistema que permite empresas oferecerem programas de fidelidade aos seus clientes, recompensando-os por compras recorrentes e aumentando a retenção de clientes.
+
+## Conteúdo da Documentação
+
+- [Guia de Início Rápido](getting-started/quick-start.md)
+- [Arquitetura do Sistema](architecture/index.md)
+  - [Registros de Decisões de Arquitetura (ADRs)](architecture/adrs/index.md)
+- [API Reference](api/reference.md)
+- [Guia do Usuário](user-guide/introduction.md)
+- [Propostas de Mudanças (RFCs)](rfcs/index.md)
+- [FAQ](faq/common-questions.md)
+
+## Contribuindo com o Projeto
+
+- [Guia de Contribuição](contributing/guide.md)
+- [Processo de ADRs](contributing/adrs.md)
+- [Processo de RFCs](contributing/rfcs.md)
+- [Padrões de Código](contributing/code-standards.md)
+
+## Links Úteis
+
+- [Repositório do Projeto](https://github.com/seu-usuario/loyalty-card)
+- [Reportar um Bug](https://github.com/seu-usuario/loyalty-card/issues/new)
