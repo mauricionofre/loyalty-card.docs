@@ -1,57 +1,67 @@
----
-layout: default
-title: Arquitetura do Sistema
----
+# Arquitetura de Referência - Onboarding de Clientes
 
-# Arquitetura do Sistema Loyalty Card
+## Visão Geral
+Este documento estabelece a arquitetura de referência para o processo de onboarding de clientes, definindo os componentes, suas interações e os padrões arquiteturais a serem seguidos.
 
-## Componentes Principais
+## Princípios Arquiteturais
+- **Desacoplamento:** Serviços com responsabilidades únicas e bem definidas
+- **Resiliência:** Capacidade de recuperação em cenários de falha
+- **Observabilidade:** Monitoramento completo de cada etapa do fluxo
+- **Idempotência:** Garantia de consistência em operações repetidas
+- **Segurança por design:** Proteção de dados em todas as camadas
 
-### Frontend (Angular)
-- Single Page Application desenvolvida em Angular
-- Responsável pela interface do usuário para clientes e administradores
-- Comunica-se exclusivamente com o BFF através de endpoints REST
+## Componentes Arquiteturais
+1. **API Gateway**
+   - Roteamento de requisições
+   - Rate limiting
+   - Autenticação inicial
 
-### Backend for Frontend (BFF)
-- Serviço intermediário em Node.js/Express
-- Agrega dados de múltiplos serviços
-- Simplifica a interface de comunicação para o frontend
-- Implementa lógica específica para necessidades da UI
+2. **Identity Service**
+   - Gestão de identidades
+   - Autenticação
+   - Federação de identidades
 
-### APIs de Backend
-1. **API de Usuários**: Gerencia dados de clientes, empresas e administradores
-2. **API de Pontos**: Controla transações de pontos, saldos e históricos
-3. **API de Prêmios**: Administra catálogo de prêmios e resgates
+3. **Tenant Service**
+   - Registro e gestão de empresas
+   - Validação de dados empresariais
+   - Configurações específicas por tenant
 
-## Diagrama de Componentes
+4. **User Service**
+   - Gestão do ciclo de vida de usuários
+   - Vinculação usuário-empresa
+   - Gestão de permissões
 
-```mermaid
-graph LR
-    subgraph "Frontend"
-        Angular[Angular App]
-    end
-    
-    subgraph "Middleware"
-        BFF[BFF Service]
-    end
-    
-    subgraph "Backend"
-        API1[API Usuários]
-        API2[API Pontos]
-        API3[API Prêmios]
-    end
-    
-    subgraph "Persistência"
-        DB1[(BD Usuários)]
-        DB2[(BD Transações)]
-        DB3[(BD Catálogo)]
-    end
-    
-    Angular --> |HTTP/REST| BFF
-    BFF --> |HTTP/REST| API1
-    BFF --> |HTTP/REST| API2
-    BFF --> |HTTP/REST| API3
-    API1 --> DB1
-    API2 --> DB2
-    API3 --> DB3
-```
+5. **Notification Service**
+   - Envio de emails transacionais
+   - Fila de notificações resiliente
+   - Templates personalizados
+
+6. **Validation Service**
+   - Validação assíncrona de dados externos
+   - Verificação de CNPJ e outros documentos
+   - Anti-fraud checks
+
+## Padrões de Comunicação
+- **Event-driven:** Comunicação assíncrona via eventos de domínio
+- **Request-response:** Para operações síncronas críticas
+- **Saga pattern:** Para transações distribuídas de múltiplas etapas
+- **Circuit breaker:** Para mitigação de falhas em serviços externos
+
+## Armazenamento de Dados
+- **Segregação por contexto delimitado:**
+  - BancoEmpresas: PostgreSQL
+  - BancoUsuarios: PostgreSQL com criptografia de dados sensíveis
+  - Cache distribuído: Redis para sessões e dados temporários
+  - Event store: Para auditoria e rastreabilidade completa
+
+## Considerações de Deployment
+- Implantação independente de serviços via containers
+- Estratégia de CI/CD por serviço
+- Blue/Green deployment para atualizações sem downtime
+- Infrastructure as Code (IaC) para provisionamento consistente
+
+## Métricas e Monitoramento
+- Tempo médio de onboarding completo
+- Taxa de conversão do funil de onboarding
+- Taxas de erro por etapa do processo
+- Latência de cada componente do sistema
