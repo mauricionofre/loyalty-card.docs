@@ -1,57 +1,21 @@
----
-layout: default
-title: Arquitetura do Sistema
----
+# Arquitetura do Sistema
 
-# Arquitetura do Sistema Loyalty Card
+Esta seção contém a documentação arquitetural do sistema, incluindo Arquiteturas de Referência (ARs) e Registros de Decisão de Arquitetura (ADRs).
 
-## Componentes Principais
+## Arquiteturas de Referência (ARs)
 
-### Frontend (Angular)
-- Single Page Application desenvolvida em Angular
-- Responsável pela interface do usuário para clientes e administradores
-- Comunica-se exclusivamente com o BFF através de endpoints REST
+As Arquiteturas de Referência descrevem os padrões, componentes e estruturas arquiteturais adotados para diferentes partes do sistema.
 
-### Backend for Frontend (BFF)
-- Serviço intermediário em Node.js/Express
-- Agrega dados de múltiplos serviços
-- Simplifica a interface de comunicação para o frontend
-- Implementa lógica específica para necessidades da UI
+| ID | Título | Descrição |
+|----|--------|-----------|
+| [AR-001](ar-001-onboarding-de-clientes.md) | Onboarding de Clientes | Arquitetura de referência para o processo de onboarding de clientes |
 
-### APIs de Backend
-1. **API de Usuários**: Gerencia dados de clientes, empresas e administradores
-2. **API de Pontos**: Controla transações de pontos, saldos e históricos
-3. **API de Prêmios**: Administra catálogo de prêmios e resgates
+## Registros de Decisão de Arquitetura (ADRs)
 
-## Diagrama de Componentes
+Os Registros de Decisão de Arquitetura documentam as decisões significativas tomadas pela equipe de arquitetura, incluindo o contexto, as alternativas consideradas e os motivos das escolhas.
 
-```mermaid
-graph LR
-    subgraph "Frontend"
-        Angular[Angular App]
-    end
-    
-    subgraph "Middleware"
-        BFF[BFF Service]
-    end
-    
-    subgraph "Backend"
-        API1[API Usuários]
-        API2[API Pontos]
-        API3[API Prêmios]
-    end
-    
-    subgraph "Persistência"
-        DB1[(BD Usuários)]
-        DB2[(BD Transações)]
-        DB3[(BD Catálogo)]
-    end
-    
-    Angular --> |HTTP/REST| BFF
-    BFF --> |HTTP/REST| API1
-    BFF --> |HTTP/REST| API2
-    BFF --> |HTTP/REST| API3
-    API1 --> DB1
-    API2 --> DB2
-    API3 --> DB3
-```
+| ID | Título | Status | Data | Relacionado a |
+|----|--------|--------|------|--------------|
+| [ADR-001](adr/adr-001-decisoes-arquiteturais-processo-onboarding.md) | Decisões Arquiteturais do Processo de Onboarding | Aprovado | 25 de abril de 2025 | [AR-001](ar-001-onboarding-de-clientes.md) |
+
+> Para adicionar um novo ADR, siga o [template de ADR](../templates/adr-template.md) e adicione uma entrada na tabela acima.

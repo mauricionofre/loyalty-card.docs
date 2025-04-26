@@ -1,0 +1,65 @@
+<div class="footer-custom">
+  <div class="footer-content">
+    <p>© 2023 Loyalty Card - Documentação criada com <svg class="heart" viewBox="0 0 32 32" width="14" height="14"><path fill="#e25555" d="M16 28.261c0 0-14-7.926-14-17.413 0-9.487 13.58-10.567 14 0.125 0.42-10.692 14-9.612 14-0.125 0 9.487-14 17.413-14 17.413z"></path></svg> no Brasil</p>
+    <div class="footer-links">
+      <a href="https://github.com/seu-usuario/loyalty-card">GitHub</a>
+      <span class="separator">|</span>
+      <a href="mailto:suporte@loyalty-card.com">Suporte</a>
+    </div>
+  </div>
+</div>
+
+<style>
+  .footer-custom {
+    margin-top: 4rem;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    border-top: 1px solid #2d2d4a;
+    color: #a1a1c8;
+    font-size: 0.875rem;
+  }
+
+  .footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .footer-links {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+  }
+
+  .footer-links a {
+    color: #7579e7;
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .footer-links a:hover {
+    color: #8860d0;
+    text-decoration: underline;
+  }
+
+  .separator {
+    color: #2d2d4a;
+  }
+  
+  .heart {
+    display: inline-block;
+    vertical-align: middle;
+    animation: heartbeat 1.5s infinite;
+  }
+  
+  @keyframes heartbeat {
+    0% { transform: scale(1); }
+    5% { transform: scale(1.2); }
+    10% { transform: scale(1); }
+    15% { transform: scale(1.2); }
+    20% { transform: scale(1); }
+    100% { transform: scale(1); }
+  }
+</style>
