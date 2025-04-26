@@ -153,3 +153,511 @@
   overflow-x: auto;
   max-width: 100%;
 }
+
+/* CSS personalizado para a documentação do Loyalty Card */
+
+/* Definições globais */
+:root {
+  --background-color: #121212;
+  --sidebar-color: #1a1a2e;
+  --header-color: #16213e;
+  --text-color: #f1f1f1;
+  --link-color: #7579e7;
+  --link-hover-color: #8860d0;
+  --border-color: #2d2d4a;
+  --code-background: #1e1e1e;
+  --callout-info-color: #0f3460;
+  --callout-warning-color: #e6704b;
+  --border-radius: 8px;
+}
+
+/* Configurações gerais de tipografia */
+body {
+  background-color: var(--background-color);
+  color: var(--text-color);
+  font-family: 'Inter', -apple-system, system-ui, sans-serif;
+  line-height: 1.6;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: var(--text-color);
+  font-weight: 600;
+  margin-top: 1.5em;
+  margin-bottom: 0.5em;
+}
+
+a {
+  color: var(--link-color);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+a:hover {
+  color: var(--link-hover-color);
+}
+
+p {
+  margin-bottom: 1.2em;
+}
+
+/* Tabelas */
+table {
+  margin: 1.5em 0;
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius);
+  overflow: hidden;
+}
+
+th {
+  background-color: var(--header-color);
+  padding: 0.8em;
+  text-align: left;
+  font-weight: 500;
+}
+
+td {
+  padding: 0.8em;
+  border-top: 1px solid var(--border-color);
+}
+
+tr:nth-child(even) {
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+/* Código */
+pre, code {
+  font-family: 'SFMono-Regular', 'Consolas', monospace;
+  background-color: var(--code-background) !important;
+  border-radius: 4px;
+}
+
+pre {
+  padding: 1em;
+  overflow-x: auto;
+  border-radius: var(--border-radius);
+  margin: 1.5em 0;
+}
+
+code {
+  padding: 0.2em 0.4em;
+  font-size: 0.9em;
+}
+
+/* Callouts e notas */
+.callout {
+  border-radius: var(--border-radius);
+  margin: 1.5em 0;
+  padding: 1em;
+  border-left: 4px solid var(--link-color);
+  background-color: rgba(115, 115, 240, 0.1);
+}
+
+.callout-title {
+  font-weight: 600;
+  margin-top: 0;
+  margin-bottom: 0.5em;
+}
+
+.callout.info {
+  border-color: var(--callout-info-color);
+  background-color: rgba(15, 52, 96, 0.1);
+}
+
+.callout.warning {
+  border-color: var(--callout-warning-color);
+  background-color: rgba(230, 112, 75, 0.1);
+}
+
+/* Formatação de imagens */
+img {
+  max-width: 100%;
+  border-radius: var(--border-radius);
+  margin: 1em 0;
+}
+
+/* Mermaid diagrams */
+.mermaid {
+  background: #1e1e2e;
+  padding: 1em;
+  border-radius: var(--border-radius);
+  margin: 1.5em 0;
+  text-align: center;
+}
+
+/* Estilos personalizados para o tema Loyalty Card */
+
+:root {
+  --primary-dark: #1a1a2e;
+  --primary-light: #16213e;
+  --secondary: #0f3460;
+  --accent: #7579e7;
+  --highlight: #8860d0;
+  --text: #f1f1f1;
+  --text-light: #e1e1ff;
+  --border: #2d2d4a;
+  --code-bg: #1e1e1e;
+  --border-radius: 8px;
+}
+
+/* ===== Layout Base ===== */
+body {
+  background-color: var(--primary-dark);
+  color: var(--text);
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  margin: 0;
+  padding: 0;
+  line-height: 1.6;
+}
+
+/* ===== Header ===== */
+.page-header {
+  background: linear-gradient(135deg, var(--primary-dark) 0%, var(--secondary) 100%);
+  padding: 1.5rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.project-name {
+  font-size: 1.75rem;
+  margin: 0;
+  color: var(--text);
+  font-weight: 700;
+}
+
+.project-tagline {
+  font-size: 1rem;
+  margin: 0.5rem 0 0;
+  font-weight: 300;
+  opacity: 0.8;
+}
+
+/* ===== Main Layout ===== */
+.main-wrapper {
+  display: flex;
+}
+
+/* ===== Sidebar ===== */
+.sidebar {
+  width: 250px;
+  background-color: var(--primary-light);
+  min-height: calc(100vh - 80px);
+  padding: 2rem 0;
+  border-right: 1px solid var(--border);
+}
+
+.sidebar-content {
+  padding: 0 1rem;
+}
+
+.sidebar-nav {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.sidebar-item {
+  margin-bottom: 0.25rem;
+}
+
+.sidebar-link {
+  display: block;
+  padding: 0.5rem 0.75rem;
+  color: var(--text);
+  text-decoration: none;
+  border-radius: var(--border-radius);
+  transition: all 0.2s ease;
+  font-weight: 500;
+}
+
+.sidebar-link:hover {
+  background-color: rgba(117, 121, 231, 0.1);
+  color: var(--accent);
+}
+
+.sidebar-item.active > .sidebar-link {
+  background-color: rgba(117, 121, 231, 0.15);
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.sidebar-subnav {
+  list-style: none;
+  padding-left: 1.5rem;
+  margin-top: 0.25rem;
+  margin-bottom: 0.5rem;
+}
+
+.sidebar-sublink {
+  display: block;
+  padding: 0.4rem 0.5rem;
+  color: rgba(241, 241, 241, 0.8);
+  text-decoration: none;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  transition: all 0.2s ease;
+}
+
+.sidebar-sublink:hover {
+  color: var(--accent);
+  background-color: rgba(117, 121, 231, 0.05);
+}
+
+.sidebar-subitem.active > .sidebar-sublink {
+  color: var(--accent);
+  font-weight: 500;
+}
+
+/* ===== Main Content ===== */
+.main-content {
+  flex: 1;
+  padding: 2rem;
+  overflow-x: hidden;
+}
+
+.main-content h1, 
+.main-content h2, 
+.main-content h3, 
+.main-content h4, 
+.main-content h5, 
+.main-content h6 {
+  color: var(--text);
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 0.5rem;
+}
+
+.main-content h1 {
+  color: var(--accent);
+}
+
+.main-content a {
+  color: var(--accent);
+  text-decoration: none;
+  border-bottom: 1px dotted var(--accent);
+}
+
+.main-content a:hover {
+  color: var(--highlight);
+  border-bottom: 1px solid var(--highlight);
+}
+
+/* ===== Mobile Responsive ===== */
+.sidebar-toggle {
+  display: none;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 10px;
+}
+
+.sidebar-toggle span {
+  display: block;
+  width: 25px;
+  height: 3px;
+  background-color: var(--text);
+  margin: 5px 0;
+  border-radius: 3px;
+  transition: transform 0.3s ease;
+}
+
+@media screen and (max-width: 800px) {
+  .main-wrapper {
+    flex-direction: column;
+  }
+  
+  .sidebar {
+    width: 100%;
+    min-height: auto;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+  }
+  
+  body.sidebar-open .sidebar {
+    max-height: 1000px;
+  }
+  
+  .sidebar-toggle {
+    display: block;
+  }
+  
+  body.sidebar-open .sidebar-toggle span:first-child {
+    transform: translateY(8px) rotate(45deg);
+  }
+  
+  body.sidebar-open .sidebar-toggle span:nth-child(2) {
+    opacity: 0;
+  }
+  
+  body.sidebar-open .sidebar-toggle span:last-child {
+    transform: translateY(-8px) rotate(-45deg);
+  }
+}
+
+/* ===== Code Blocks ===== */
+code {
+  background-color: var(--code-bg);
+  border-radius: 4px;
+  padding: 0.2em 0.4em;
+  font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+  font-size: 0.9em;
+}
+
+pre {
+  background-color: var(--code-bg);
+  border-radius: var(--border-radius);
+  padding: 1rem;
+  overflow-x: auto;
+}
+
+pre code {
+  background-color: transparent;
+  padding: 0;
+}
+
+/* ===== Tables ===== */
+table {
+  border-collapse: separate;
+  border-spacing: 0;
+  border: 1px solid var(--border);
+  border-radius: var(--border-radius);
+  margin: 1.5rem 0;
+  width: 100%;
+  overflow: hidden;
+}
+
+th {
+  background-color: var(--primary-light);
+  text-align: left;
+  padding: 0.75rem 1rem;
+  font-weight: 600;
+}
+
+td {
+  padding: 0.75rem 1rem;
+  border-top: 1px solid var(--border);
+}
+
+tr:nth-child(even) {
+  background-color: rgba(255, 255, 255, 0.03);
+}
+
+/* ===== Lists ===== */
+ul, ol {
+  padding-left: 2rem;
+}
+
+li {
+  margin-bottom: 0.5rem;
+}
+
+/* ===== Callouts ===== */
+.callout {
+  border-left: 4px solid var(--accent);
+  background-color: rgba(117, 121, 231, 0.1);
+  border-radius: 0 var(--border-radius) var(--border-radius) 0;
+  padding: 1rem;
+  margin: 1.5rem 0;
+}
+
+.callout-title {
+  font-weight: 600;
+  margin-top: 0;
+  color: var(--accent);
+}
+
+.callout.warning {
+  border-color: #e6704b;
+  background-color: rgba(230, 112, 75, 0.1);
+}
+
+.callout.info {
+  border-color: var(--secondary);
+  background-color: rgba(15, 52, 96, 0.1);
+}
+
+/* ===== Mermaid Diagrams ===== */
+.mermaid {
+  background-color: var(--code-bg);
+  border-radius: var(--border-radius);
+  padding: 1rem;
+  margin: 1.5rem 0;
+  text-align: center;
+}
+
+/* ===== Docs Grid ===== */
+.docs-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.5rem;
+  margin: 2rem 0;
+}
+
+.docs-card {
+  background-color: rgba(117, 121, 231, 0.05);
+  border: 1px solid var(--border);
+  border-radius: var(--border-radius);
+  padding: 1.2rem;
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  text-decoration: none !important;
+  border-bottom: none !important;
+}
+
+.docs-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  border-color: var(--accent);
+}
+
+.docs-card h3 {
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+  color: var(--accent);
+  border-bottom: none;
+  font-size: 1.25rem;
+}
+
+.docs-card p {
+  margin: 0;
+  color: var(--text);
+}
+
+/* ===== Aux Links ===== */
+.aux-nav {
+  margin-top: 2rem;
+  border-top: 1px solid var(--border);
+  padding-top: 1rem;
+}
+
+.aux-nav-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.aux-nav-item {
+  margin-bottom: 0.5rem;
+}
+
+.aux-nav-link {
+  display: block;
+  padding: 0.4rem 0.75rem;
+  color: var(--text-light);
+  text-decoration: none;
+  border-radius: var(--border-radius);
+  font-size: 0.9rem;
+  transition: all 0.2s ease;
+}
+
+.aux-nav-link:hover {
+  background-color: rgba(117, 121, 231, 0.1);
+  color: var(--accent);
+}

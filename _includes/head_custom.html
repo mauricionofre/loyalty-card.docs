@@ -1,8 +1,8 @@
 <!-- Arquivo requerido pelo tema Just-the-Docs -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" />
-<script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/mermaid@9/dist/mermaid.min.js"></script>
 <script>
-  document.addEventListener('DOMContentLoaded', function() {
+  document.addEventListener("DOMContentLoaded", function() {
     mermaid.initialize({
       startOnLoad: true,
       theme: 'dark',
@@ -14,57 +14,57 @@
         secondaryColor: '#16213e',
         tertiaryColor: '#1a1a2e'
       },
-      fontFamily: 'Roboto, sans-serif',
-      flowchart: {
-        curve: 'basis',
-        useMaxWidth: true
-      }
+      securityLevel: 'loose'
     });
+    
+    // Processa todos os diagramas
+    setTimeout(function() {
+      document.querySelectorAll('.language-mermaid').forEach(function(el) {
+        // Substitui o elemento pre com a tag div necessária para mermaid
+        var content = el.textContent || el.innerText;
+        var parent = el.parentNode;
+        var div = document.createElement('div');
+        div.className = 'mermaid';
+        div.innerHTML = content;
+        parent.replaceChild(div, el);
+      });
+      
+      // Inicializa o mermaid novamente após substituir elementos
+      mermaid.init(undefined, document.querySelectorAll('.mermaid'));
+    }, 500);
   });
 </script>
 
 <!-- Fontes personalizadas -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
 <!-- CSS personalizado -->
 <style>
   :root {
-    --body-background-color: #1a1a2e;
-    --body-text-color: #f1f1f1;
+    --body-background-color: #121212;
+    --body-heading-color: #e3e3e3;
+    --body-text-color: #dedede;
     --link-color: #7579e7;
-    --btn-primary-color: #0f3460;
-    --btn-primary-hover: #7579e7;
-    --sidebar-color: #16213e;
     --nav-child-link-color: #b4b4d9;
-    --code-background: #0d1117;
-    --code-text: #e1e1ff;
+    --btn-primary-color: #0f3460;
     --border-radius: 8px;
+    --code-background: #1e1e1e;
   }
 
   body {
-    font-family: 'Roboto', sans-serif;
-    font-weight: 400;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
   }
 
-  pre, code {
-    font-family: 'Roboto Mono', monospace;
-    border-radius: var(--border-radius);
-  }
-
-  a {
-    transition: color 0.2s ease-in-out;
+  .site-header {
+    background: linear-gradient(135deg, #1a1a2e 0%, #0f3460 100%);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
   }
 
   .site-title {
     font-weight: 700;
     letter-spacing: 0.5px;
-  }
-
-  .site-nav, .side-bar {
-    background-color: var(--sidebar-color) !important;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
   }
 
   .nav-list .nav-list-item .nav-list-link:hover {
@@ -75,20 +75,11 @@
     border-radius: var(--border-radius);
   }
 
-  .btn {
-    border-radius: var(--border-radius);
-    transition: all 0.2s ease;
-  }
-
   table {
     border-collapse: separate;
     border-spacing: 0;
     border-radius: var(--border-radius);
     overflow: hidden;
-  }
-
-  th, td {
-    border: 1px solid #2d2d4a;
   }
 
   th {
@@ -105,13 +96,6 @@
     border-radius: 0 var(--border-radius) var(--border-radius) 0;
   }
 
-  .pagination-section {
-    margin-top: 2rem;
-    padding-top: 1rem;
-    border-top: 1px solid #2d2d4a;
-  }
-
-  /* Estilização de badges/tags */
   .tag {
     display: inline-block;
     padding: 0.2rem 0.5rem;
@@ -120,5 +104,49 @@
     color: #f1f1f1;
     font-size: 0.8rem;
     border-radius: 20px;
+  }
+
+  .main-content a {
+    color: #7579e7;
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.2s ease;
+  }
+
+  .main-content a:hover {
+    border-bottom-color: #7579e7;
+  }
+
+  .main-content .highlight {
+    border-radius: var(--border-radius);
+  }
+
+  code {
+    font-size: 0.9em;
+    border-radius: 4px;
+  }
+
+  .main-content h1, .main-content h2, .main-content h3, .main-content h4 {
+    border-bottom: 1px solid #333;
+    padding-bottom: 0.3em;
+  }
+
+  .main-content h2 {
+    margin-top: 1.5em;
+  }
+
+  /* Estilização para diagramas Mermaid */
+  .mermaid {
+    margin: 1.5em 0;
+    text-align: center;
+    padding: 1em;
+    background: #1e1e2e;
+    border-radius: 8px;
+  }
+  
+  /* Esconde qualquer texto auxiliar dentro dos diagramas */
+  .mermaid .label {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.9em;
   }
 </style>

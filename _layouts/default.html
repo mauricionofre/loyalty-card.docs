@@ -11,13 +11,22 @@
     {% include head_custom.html %}
   </head>
   <body>
+    <!-- Header com gradiente moderno -->
     <header class="page-header" role="banner">
-      <h1 class="project-name">{{ page.title | default: site.title | default: site.github.repository_name }}</h1>
-      <h2 class="project-tagline">{{ page.description | default: site.description | default: site.github.project_tagline }}</h2>
+      <div class="header-content">
+        <h1 class="project-name">{{ page.title | default: site.title | default: site.github.repository_name }}</h1>
+        <h2 class="project-tagline">{{ page.description | default: site.description | default: site.github.project_tagline }}</h2>
+      </div>
+      <!-- Menu hambúrguer para mobile -->
+      <button class="sidebar-toggle" aria-label="Menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
     </header>
 
     <div class="main-wrapper">
-      <!-- Sidebar navigation -->
+      <!-- Sidebar navigation com design moderno -->
       <div class="sidebar">
         <div class="sidebar-content">
           {% if site.sidebar %}
@@ -38,6 +47,19 @@
               {% endfor %}
             </ul>
           {% endif %}
+
+          <!-- Links auxiliares -->
+          {% if site.aux_links %}
+          <div class="aux-nav">
+            <ul class="aux-nav-list">
+              {% for link in site.aux_links %}
+                <li class="aux-nav-item">
+                  <a href="{{ link[1] }}" class="aux-nav-link">{{ link[0] }}</a>
+                </li>
+              {% endfor %}
+            </ul>
+          </div>
+          {% endif %}
         </div>
       </div>
 
@@ -45,36 +67,42 @@
       <main id="content" class="main-content" role="main">
         {{ content }}
 
-        <footer class="site-footer">
-          <span class="site-footer-owner">
-            <a href="{{ site.github.repository_url }}">{{ site.github.repository_name }}</a> é mantido por 
-            <a href="{{ site.github.owner_url }}">{{ site.github.owner_name }}</a>.
-          </span>
-        </footer>
+        <!-- Footer personalizado -->
+        {% include footer_custom.html %}
       </main>
     </div>
     
-    <!-- Adicionar script do Mermaid -->
-    <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+    <!-- Scripts -->
     <script>
+      // Toggle para sidebar em dispositivos móveis
       document.addEventListener("DOMContentLoaded", function() {
-        mermaid.initialize({
-          startOnLoad: true,
-          theme: 'default',
-          securityLevel: 'loose',
-          htmlLabels: true
-        });
-        
-        // Processa todos os diagramas
-        mermaid.init(undefined, document.querySelectorAll('.language-mermaid'));
-
-        // Toggle para sidebar em dispositivos móveis
         const sidebarToggle = document.querySelector('.sidebar-toggle');
         if (sidebarToggle) {
           sidebarToggle.addEventListener('click', function() {
             document.body.classList.toggle('sidebar-open');
           });
         }
+        
+        // Expandir submenus ativos
+        const activeSubitem = document.querySelector('.sidebar-subitem.active');
+        if (activeSubitem) {
+          const parentItem = activeSubitem.closest('.sidebar-item');
+          if (parentItem) {
+            parentItem.classList.add('expanded');
+          }
+        }
+        
+        // Toggle para submenus
+        const itemsWithChildren = document.querySelectorAll('.sidebar-item:has(.sidebar-subnav)');
+        itemsWithChildren.forEach(item => {
+          const link = item.querySelector('.sidebar-link');
+          link.addEventListener('click', function(e) {
+            if (link.getAttribute('href') === '#') {
+              e.preventDefault();
+              item.classList.toggle('expanded');
+            }
+          });
+        });
       });
     </script>
   </body>

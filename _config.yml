@@ -7,25 +7,23 @@ github_username: seu-usuario
 github_repo: loyalty-card
 support_email: suporte@loyalty-card.com
 
-# Configurações de navegação
-show_downloads: false
-google_analytics: # Seu ID do Google Analytics (opcional)
-
 # Outras configurações
 markdown: kramdown
 kramdown:
+  input: GFM
   syntax_highlighter_opts:
     disable: true
 
-# Tema e plugins
-remote_theme: pmarsceill/just-the-docs@v0.3.3
+# Plugins
 plugins:
   - jekyll-remote-theme
   - jekyll-relative-links
   - jekyll-seo-tag
-  - jekyll-github-metadata
 
-# Configurações do tema Just the Docs
+# Tema
+remote_theme: just-the-docs/just-the-docs@v0.4.0.rc4
+
+# Configurações do tema Just-the-Docs
 search_enabled: true
 heading_anchors: true
 color_scheme: "dark"
@@ -35,12 +33,43 @@ aux_links:
   "Loyalty Card no GitHub":
     - "//github.com/seu-usuario/loyalty-card"
 
-# Estrutura de navegação
-nav_order:
-  home: 1
-  architecture: 2
-  diagrams: 3
-  api: 4
-  domain: 5
-  operations: 6
-  requirements: 7
+# Configurações de navegação
+nav:
+  - title: Home
+    url: /
+  - title: Arquitetura
+    url: /docs/architecture/
+    children:
+      - title: AR-001 Onboarding
+        url: /docs/architecture/ar-001-onboarding-de-clientes
+      - title: ADR-001 Decisões
+        url: /docs/architecture/adr/adr-001-decisoes-arquiteturais-processo-onboarding
+  - title: Diagramas
+    url: /docs/diagrams/
+    children:
+      - title: Sequência de Onboarding
+        url: /docs/diagrams/sequence-onboarding
+      - title: Estado de Onboarding
+        url: /docs/diagrams/state-onboarding
+      - title: Arquitetura
+        url: /docs/diagrams/architecture-overview
+  - title: API
+    url: /docs/api/
+  - title: Domínio
+    url: /docs/domain/
+  - title: Operações
+    url: /docs/operations/
+  - title: Requisitos
+    url: /docs/requirements/
+
+# Configurações de callouts
+callouts:
+  warning:
+    title: Atenção
+    color: red
+  note:
+    title: Nota
+    color: blue
+  tip:
+    title: Dica
+    color: green
