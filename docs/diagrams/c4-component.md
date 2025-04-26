@@ -3,21 +3,21 @@ C4Component
     title Diagrama de Componentes do Loyalty Service
     
     Container_Boundary(loyaltyService, "Loyalty Service") {
-        Component(programController, "Program Controller", "Spring REST Controller", "API para gerenciamento de programas")
-        Component(rewardController, "Reward Controller", "Spring REST Controller", "API para gerenciamento de recompensas")
-        Component(transactionController, "Transaction Controller", "Spring REST Controller", "API para transações e pontos")
+        Component(programController, "Program Controller", "ASP.NET Core API Controller", "API para gerenciamento de programas")
+        Component(rewardController, "Reward Controller", "ASP.NET Core API Controller", "API para gerenciamento de recompensas")
+        Component(transactionController, "Transaction Controller", "ASP.NET Core API Controller", "API para transações e pontos")
         
-        Component(programService, "Program Service", "Spring Service", "Lógica de negócio para programas")
-        Component(rewardService, "Reward Service", "Spring Service", "Lógica de negócio para recompensas")
-        Component(transactionService, "Transaction Service", "Spring Service", "Lógica de negócio para transações")
-        Component(pointsCalculator, "Points Calculator", "Spring Service", "Calcula pontos baseado em regras")
+        Component(programService, "Program Service", ".NET Service", "Lógica de negócio para programas")
+        Component(rewardService, "Reward Service", ".NET Service", "Lógica de negócio para recompensas")
+        Component(transactionService, "Transaction Service", ".NET Service", "Lógica de negócio para transações")
+        Component(pointsCalculator, "Points Calculator", ".NET Service", "Calcula pontos baseado em regras")
         
-        Component(programRepo, "Program Repository", "Spring Data JPA", "Acesso a dados de programas")
-        Component(rewardRepo, "Reward Repository", "Spring Data JPA", "Acesso a dados de recompensas")
-        Component(transactionRepo, "Transaction Repository", "Spring Data JPA", "Acesso a dados de transações")
+        Component(programRepo, "Program Repository", "Entity Framework Core", "Acesso a dados de programas")
+        Component(rewardRepo, "Reward Repository", "Entity Framework Core", "Acesso a dados de recompensas")
+        Component(transactionRepo, "Transaction Repository", "Entity Framework Core", "Acesso a dados de transações")
         
-        Component(tenantContext, "Tenant Context", "Spring Component", "Mantém contexto do tenant atual")
-        Component(kafkaProducer, "Kafka Producer", "Spring Kafka", "Publica eventos de fidelidade")
+        Component(tenantContext, "Tenant Context", ".NET Core Middleware", "Mantém contexto do tenant atual")
+        Component(kafkaProducer, "Kafka Producer", ".NET Kafka Client", "Publica eventos de fidelidade")
     }
     
     ContainerDb(postgresDB, "PostgreSQL", "Database")
@@ -35,12 +35,12 @@ C4Component
     
     Rel(programService, programRepo, "Usa")
     Rel(rewardService, rewardRepo, "Usa")
-    Rel(transactionService, transactionRepo, "Usa")
+    Rel(transactionService, rewardRepo, "Usa")
     Rel(transactionService, pointsCalculator, "Usa")
     
-    Rel(programRepo, postgresDB, "Lê/Escreve", "JDBC")
-    Rel(rewardRepo, postgresDB, "Lê/Escreve", "JDBC")
-    Rel(transactionRepo, postgresDB, "Lê/Escreve", "JDBC")
+    Rel(programRepo, postgresDB, "Lê/Escreve", "EF Core")
+    Rel(rewardRepo, postgresDB, "Lê/Escreve", "EF Core")
+    Rel(transactionRepo, postgresDB, "Lê/Escreve", "EF Core")
     
     Rel_D(programRepo, tenantContext, "Usa para filtrar por tenant")
     Rel_D(rewardRepo, tenantContext, "Usa para filtrar por tenant")
@@ -49,6 +49,6 @@ C4Component
     Rel(transactionService, kafkaProducer, "Publica eventos")
     Rel(kafkaProducer, notificationService, "Envia eventos para")
     
-    Rel(programService, redisCache, "Armazena cache", "Redis Protocol")
-    Rel(transactionService, redisCache, "Armazena cache", "Redis Protocol")
+    Rel(programService, redisCache, "Armazena cache", "StackExchange.Redis")
+    Rel(transactionService, redisCache, "Armazena cache", "StackExchange.Redis")
 ```

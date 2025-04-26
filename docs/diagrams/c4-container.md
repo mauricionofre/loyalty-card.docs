@@ -10,11 +10,11 @@ C4Container
         Container(consumerPortal, "Portal Consumidor", "React PWA", "Interface para consumidores finais")
         Container(mobileApp, "App Mobile", "React Native", "Aplicativo para consumidores")
         
-        Container(tenantService, "Tenant Service", "Spring Boot", "Gerenciamento de tenants")
-        Container(authService, "Auth Service", "Spring Boot", "Autenticação e autorização")
-        Container(userService, "User Service", "Spring Boot", "Gerenciamento de usuários")
-        Container(loyaltyService, "Loyalty Service", "Spring Boot", "Lógica do programa de fidelidade")
-        Container(notificationService, "Notification Service", "Spring Boot", "Gerenciamento de notificações")
+        Container(tenantService, "Tenant Service", "ASP.NET Core", "Gerenciamento de tenants")
+        Container(authService, "Auth Service", "ASP.NET Core", "Autenticação e autorização")
+        Container(userService, "User Service", "ASP.NET Core", "Gerenciamento de usuários")
+        Container(loyaltyService, "Loyalty Service", "ASP.NET Core", "Lógica do programa de fidelidade")
+        Container(notificationService, "Notification Service", "ASP.NET Core", "Gerenciamento de notificações")
         
         ContainerDb(postgresDB, "PostgreSQL", "Database", "Armazenamento persistente com schemas por tenant")
         ContainerDb(redisCache, "Redis", "Cache", "Cache distribuído")
@@ -44,13 +44,13 @@ C4Container
     Rel(apiGateway, userService, "Roteia para", "HTTP/JSON")
     Rel(apiGateway, loyaltyService, "Roteia para", "HTTP/JSON")
     
-    Rel(tenantService, postgresDB, "Lê/Escreve", "JDBC")
-    Rel(authService, postgresDB, "Lê/Escreve", "JDBC")
-    Rel(userService, postgresDB, "Lê/Escreve", "JDBC")
-    Rel(loyaltyService, postgresDB, "Lê/Escreve", "JDBC")
+    Rel(tenantService, postgresDB, "Lê/Escreve", "EF Core")
+    Rel(authService, postgresDB, "Lê/Escreve", "EF Core")
+    Rel(userService, postgresDB, "Lê/Escreve", "EF Core")
+    Rel(loyaltyService, postgresDB, "Lê/Escreve", "EF Core")
     
-    Rel(authService, redisCache, "Armazena sessões", "Redis Protocol")
-    Rel(loyaltyService, redisCache, "Cache", "Redis Protocol")
+    Rel(authService, redisCache, "Armazena sessões", "StackExchange.Redis")
+    Rel(loyaltyService, redisCache, "Cache", "StackExchange.Redis")
     
     Rel(notificationService, emailSystem, "Envia emails", "SMTP")
     Rel(tenantService, paymentGateway, "Processa pagamentos", "HTTPS/API")
