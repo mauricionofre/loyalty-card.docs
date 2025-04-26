@@ -23,7 +23,7 @@ O Loyalty Card é uma plataforma SaaS multi-tenant para gestão de programas de 
 A documentação está organizada nas seguintes seções:
 
 <div class="docs-grid">
-  <a href="/docs/architecture/" class="docs-card">
+  <a href="/docs/architecture/index.md" class="docs-card">
     <h3>Arquitetura</h3>
     <p>Arquitetura de referência e decisões arquiteturais do sistema</p>
   </a>
@@ -53,10 +53,10 @@ A documentação está organizada nas seguintes seções:
 
 Para começar a explorar o sistema, recomendamos seguir esta ordem:
 
-1. Entenda a [Arquitetura Geral](/docs/architecture/)
-2. Explore o [Modelo de Domínio](/docs/domain/)
-3. Consulte a [Documentação da API](/docs/api/)
-4. Analise os [Diagramas do Sistema](/docs/diagrams/)
+1. Entenda a [Arquitetura Geral](/docs/architecture/index.md)
+2. Explore o [Modelo de Domínio](/docs/domain/index.md)
+3. Consulte a [Documentação da API](/docs/api/index.md)
+4. Analise os [Diagramas do Sistema](/docs/diagrams/index.md)
 
 ## Status Atual
 
