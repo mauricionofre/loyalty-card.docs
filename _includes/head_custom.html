@@ -1,0 +1,107 @@
+<!-- Script para Mermaid -->
+<script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: 'dark',
+      themeCSS: '.node rect { fill: #0f3460; stroke: #7579e7; } .edgeLabel { background-color: #1a1a2e; color: #f1f1f1; } .edgePath .path { stroke: #7579e7; } .cluster rect { fill: #16213e; stroke: #7579e7; }',
+      fontFamily: 'Roboto, sans-serif',
+      flowchart: {
+        curve: 'basis',
+        useMaxWidth: true
+      }
+    });
+  });
+</script>
+
+<!-- Fontes personalizadas -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<!-- CSS personalizado para refinamentos -->
+<style>
+  :root {
+    --body-background-color: #1a1a2e;
+    --body-text-color: #f1f1f1;
+    --link-color: #7579e7;
+    --btn-primary-color: #0f3460;
+    --btn-primary-hover: #7579e7;
+    --sidebar-color: #16213e;
+    --nav-child-link-color: #b4b4d9;
+    --code-background: #0d1117;
+    --code-text: #e1e1ff;
+    --border-radius: 8px;
+  }
+
+  body {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+  }
+
+  pre, code {
+    font-family: 'Roboto Mono', monospace;
+    border-radius: var(--border-radius);
+  }
+
+  a {
+    transition: color 0.2s ease-in-out;
+  }
+
+  .site-title {
+    font-weight: 700;
+    letter-spacing: 0.5px;
+  }
+
+  .site-nav {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  }
+
+  .btn {
+    border-radius: var(--border-radius);
+    transition: all 0.2s ease;
+  }
+
+  table {
+    border-collapse: separate;
+    border-spacing: 0;
+    border-radius: var(--border-radius);
+    overflow: hidden;
+  }
+
+  th, td {
+    border: 1px solid #2d2d4a;
+  }
+
+  th {
+    background-color: #0f3460;
+  }
+
+  tr:nth-child(odd) {
+    background-color: #1f1f3a;
+  }
+
+  blockquote {
+    border-left: 4px solid var(--link-color);
+    background-color: rgba(115, 115, 240, 0.1);
+    border-radius: 0 var(--border-radius) var(--border-radius) 0;
+  }
+
+  .pagination-section {
+    margin-top: 2rem;
+    padding-top: 1rem;
+    border-top: 1px solid #2d2d4a;
+  }
+
+  /* Estilização de badges/tags */
+  .tag {
+    display: inline-block;
+    padding: 0.2rem 0.5rem;
+    margin: 0.2rem;
+    background-color: #0f3460;
+    color: #f1f1f1;
+    font-size: 0.8rem;
+    border-radius: 20px;
+  }
+</style>

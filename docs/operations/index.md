@@ -1,64 +1,83 @@
-# Estratégia de Alta Disponibilidade e Disaster Recovery - Onboarding
+# Estratégia de Alta Disponibilidade e Disaster Recovery - MVP
 
-## 1. Arquitetura de Alta Disponibilidade
+## 1. Abordagem para o MVP
 
-### 1.1 Infraestrutura Multi-AZ
-- Deployments em múltiplas zonas de disponibilidade
-- Balanceamento de carga entre zonas
-- Failover automático em caso de degradação de uma zona
+Para o MVP, adotaremos uma estratégia simplificada de alta disponibilidade e disaster recovery, focando em:
 
-### 1.2 Redundância de Componentes
-- Cluster de banco de dados com réplicas automaticamente promovíveis
-- Redundância N+1 para todos os serviços essenciais
-- Cache distribuído com replicação entre nós
+- Implementação rápida e pragmática
+- Proteção adequada dos dados críticos
+- Processos manuais onde automatização não é essencial
+- Utilização eficiente de recursos limitados
 
-### 1.3 Estratégias de Resiliência
-- Retry policies com exponential backoff
-- Circuit breakers para isolamento de falhas
-- Rate limiting para proteção contra sobrecarga
-- Health checks para remoção automática de nós problemáticos
+## 2. Alta Disponibilidade Simplificada
 
-## 2. Disaster Recovery
+### 2.1 Infraestrutura
+- Deployment em uma única zona de disponibilidade (AZ)
+- Serviços com auto-scaling básico para lidar com picos de demanda
+- Monitoramento simples com alertas para problemas críticos
 
-### 2.1 RPO (Recovery Point Objective)
-- Banco de dados: RPO < 5 minutos
-- Armazenamento de arquivos: RPO < 15 minutos
-- Logs de auditoria: RPO < 1 minuto
+### 2.2 Redundância Essencial
+- Banco de dados PostgreSQL com uma réplica de leitura
+- Backup automatizado diário
+- Componentes stateless para facilitar recuperação
 
-### 2.2 RTO (Recovery Time Objective)
-- Serviços críticos de onboarding: RTO < 30 minutos
-- Serviços auxiliares: RTO < 2 horas
-- Recuperação completa: RTO < 4 horas
+### 2.3 Resiliência Básica
+- Retry policies simples para operações críticas
+- Logs detalhados para análise manual de falhas
+- Health checks básicos para os serviços principais
 
-### 2.3 Estratégias de Backup
-- Snapshots automáticos a cada 6 horas
-- Backup transacional contínuo para point-in-time recovery
-- Backups completos diários com retenção de 30 dias
-- Backup mensal com retenção de 1 ano para conformidade legal
+## 3. Disaster Recovery Simplificado
 
-### 2.4 Cenários de Recuperação
-| Cenário | Estratégia | Ações Automatizadas | Ações Manuais |
-|---------|------------|---------------------|---------------|
-| Falha de AZ | Failover automático para AZ redundante | Rerouting de tráfego, promoção de réplicas | Verificação de consistência pós-recuperação |
-| Corrupção de dados | Restauração point-in-time | Detecção e alerta | Determinação do ponto de restauração, aprovação |
-| Desastre regional | Failover regional | Nenhuma | Ativação do plano DR, redirecionamento de DNS |
-| Ataque cibernético | Isolamento e restauração | Bloqueio via WAF | Análise forense, restauração a partir de backup seguro |
+### 3.1 Objetivos para o MVP
+- RPO (Recovery Point Objective): < 24 horas
+- RTO (Recovery Time Objective): < 4 horas para serviços críticos
 
-## 3. Testes e Validação
+### 3.2 Estratégia de Backup
+- Backup diário completo automatizado
+- Retenção de 7 dias para backups diários
+- Backup manual semanal com retenção de 1 mês
+- Documentação detalhada do processo de restore
 
-### 3.1 Cronograma de Testes
-- Testes de failover: Mensal
-- DR drill completo: Trimestral
-- Testes de restauração de backup: Semanal (automatizado)
+### 3.3 Procedimentos de Recuperação
+| Cenário | Estratégia | Responsável |
+|---------|------------|-------------|
+| Falha de serviço | Reiniciar o serviço via painel de controle | DevOps |
+| Problema de banco | Failover manual para réplica | DBA |
+| Corrupção de dados | Restauração a partir do último backup | DBA + Dev |
+| Perda de ambiente | Recriação via IaC básico + restauração de backup | DevOps |
 
-### 3.2 Procedimentos de Validação
-- Validação funcional pós-recuperação
-- Verificação de integridade de dados
-- Auditoria de tempos de recuperação vs. objetivos
-- Documentação de lições aprendidas
+## 4. Monitoramento e Resposta
 
-### 3.3 Métricas de Sucesso
-- 100% de recuperação de dados conforme RPO
-- Tempos de recuperação dentro do RTO
-- Zero perda de dados em processo de onboarding
-- Continuidade de serviço para validações em andamento
+### 4.1 Monitoramento Essencial
+- Status dos serviços principais
+- Utilização de recursos (CPU, memória, disco)
+- Logs de erros críticos
+- Métricas de negócio essenciais (taxas de conversão do onboarding)
+
+### 4.2 Resposta a Incidentes
+- Lista de contatos de emergência
+- Procedimentos simplificados documentados em runbooks
+- Processo manual de escalação
+
+## 5. Evolução Pós-MVP
+
+Após a validação do MVP, planejamos evoluir para:
+
+- Infraestrutura multi-AZ para alta disponibilidade real
+- Automação completa de failover e recuperação
+- Redução de RPO para < 15 minutos via backup transacional
+- Redução de RTO para < 30 minutos via automação
+- Testes automáticos de recuperação
+- Monitoramento avançado com alertas preditivos
+
+## 6. Responsabilidades
+
+Para o MVP, as seguintes responsabilidades estão definidas:
+
+- **Mauricio de manhã**: Implementar logs adequados e mecanismos de retry (com o chapéu de Desenvolvedor)
+- **Mauricio à tarde**: Configurar backups automáticos e monitoramento básico (com o chapéu de DevOps)
+- **Mauricio à noite**: Definir e testar procedimentos de recuperação de banco de dados (com o chapéu de DBA)
+- **Mauricio nos fins de semana**: Definir prioridades de recuperação com base no valor para o negócio (com o chapéu de Gerente de Produto)
+- **Mauricio nos feriados**: Torcer para que nada pegue fogo enquanto descansa (com o chapéu de bombeiro de plantão)
+
+> **Nota**: Esta distribuição de responsabilidades reflete a realidade de startups e MVPs, onde frequentemente uma única pessoa assume múltiplos papéis. À medida que o produto evolui e o time cresce, essas responsabilidades serão gradualmente distribuídas entre especialistas dedicados. Até lá, mantenha café suficiente por perto!

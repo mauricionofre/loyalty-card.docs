@@ -1,0 +1,71 @@
+# Configurações básicas do site
+title: Loyalty Card Documentation
+description: Documentação completa do sistema Loyalty Card
+
+# Informações de contato e links
+github_username: seu-usuario
+github_repo: loyalty-card
+support_email: suporte@loyalty-card.com
+
+# Configurações de navegação
+show_downloads: false
+google_analytics: # Seu ID do Google Analytics (opcional)
+
+# Outras configurações
+markdown: kramdown
+
+# Habilitar processamento de mermaid
+kramdown:
+  syntax_highlighter_opts:
+    disable: true
+  math_engine: mathjax
+
+# Troca para um tema moderno com navegação lateral
+remote_theme: pmarsceill/just-the-docs
+plugins:
+  - jekyll-remote-theme
+  - jekyll-relative-links
+  - jekyll-seo-tag
+
+# Configurações do tema Just the Docs
+color_scheme: dark
+search_enabled: true
+heading_anchors: true
+aux_links:
+  "Loyalty Card no GitHub":
+    - "//github.com/seu-usuario/loyalty-card"
+
+# Personalização de cores
+# Esquema elegante azul-roxo escuro
+colors:
+  primary_dark: "#1a1a2e"
+  primary_light: "#16213e"
+  secondary: "#0f3460"
+  accent: "#7579e7"
+  highlight: "#8860d0"
+  text: "#f1f1f1"
+  links: "#7579e7"
+  btn_primary: "#0f3460"
+  btn_primary_hover: "#7579e7"
+  nav_background: "#1a1a2e"
+  nav_links: "#f1f1f1"
+  code_background: "#0d1117"
+
+# Configuração da barra de navegação
+nav_external_links:
+  - title: Documentação da API
+    url: /api
+    opens_in_new_tab: false
+  - title: Suporte
+    url: mailto:suporte@loyalty-card.com
+    opens_in_new_tab: true
+
+# Estrutura do menu
+nav_order:
+  home: 1
+  architecture: 2
+  diagrams: 3
+  api: 4
+  domain: 5
+  operations: 6
+  requirements: 7

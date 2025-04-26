@@ -2,30 +2,30 @@
 
 ```mermaid
 flowchart TD
-    subgraph "Comandos"
+    subgraph "Tenant Service"
         C1[RegistrarEmpresaCommand]
-        C2[CriarUsuarioAdminCommand]
-        C3[EnviarEmailValidaçãoCommand]
-        C4[ValidarEmailUsuarioCommand]
-        C5[CompletarOnboardingCommand]
+        EH1[TenantRegistradoHandler]
+        E1[TenantRegistrado]
+        S1[Validador CNPJ]
+        EH4[OnboardingCompletoHandler]
+        C6[AtivarTenantCommand]
+        E6[TenantAtivado]
     end
     
-    subgraph "Event Handlers"
-        EH1[TenantRegistradoHandler]
+    subgraph "User & Identity Service"
+        C2[CriarUsuarioAdminCommand]
+        E2[UsuarioAdminCriado]
+        C4[ValidarEmailUsuarioCommand]
+        E4[EmailValidado]
         EH2[UsuarioCriadoHandler]
         EH3[EmailValidadoHandler]
-    end
-    
-    subgraph "Domain Events"
-        E1[TenantRegistrado]
-        E2[UsuarioAdminCriado]
-        E3[EmailValidaçãoEnviado]
-        E4[EmailValidado]
+        C5[CompletarOnboardingCommand]
         E5[OnboardingCompleto]
     end
     
-    subgraph "Serviços Externos"
-        S1[Validador CNPJ]
+    subgraph "Notification Service"
+        C3[EnviarEmailValidacaoCommand]
+        E3[EmailValidacaoEnviado]
         S2[Provedor Email]
         S3[Gerador Templates]
     end
@@ -45,5 +45,12 @@ flowchart TD
     E4 --> EH3
     EH3 --> C5
     C5 --> E5
+    E5 --> EH4
+    EH4 --> C6
+    C6 --> E6
 
+    %% Fluxo entre serviços
+    E2 --> C3
+    E3 -.-> C4
+    E5 --> EH4
 ```
