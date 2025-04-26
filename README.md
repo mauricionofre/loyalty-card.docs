@@ -1,8 +1,23 @@
-# Loyalty Card - Repositório de Documentação
+# 🏆 Loyalty Card - Documentação Oficial
 
-Este repositório contém a documentação completa do sistema Loyalty Card. A documentação está disponível online em [https://seu-usuario.github.io/loyalty-card/](https://seu-usuario.github.io/loyalty-card/).
+[![GitHub Pages](https://img.shields.io/badge/GitHub%20Pages-Publicado-success)](https://mauricionofre.github.io/loyalty-card.docs/)
+[![Status](https://img.shields.io/badge/Status-MVP-blue)](https://mauricionofre.github.io/loyalty-card.docs/)
+[![Jekyll](https://img.shields.io/badge/Jekyll-4.2.0-red)](https://jekyllrb.com/)
 
-## Estrutura do Repositório
+Este repositório contém a documentação completa do sistema Loyalty Card, uma plataforma SaaS multi-tenant para gestão de programas de fidelidade. A documentação está disponível online em [https://mauricionofre.github.io/loyalty-card.docs/](https://mauricionofre.github.io/loyalty-card.docs/).
+
+![Loyalty Card Banner](assets/images/loyalty-card-banner.png)
+
+## 📚 Conteúdo da Documentação
+
+- **Arquitetura**: Arquitetura de referência e decisões arquiteturais
+- **Diagramas**: Diagramas de sequência, estado e fluxos do sistema
+- **API**: Especificação completa da API REST
+- **Domínio**: Modelos de domínio, entidades e agregados
+- **Operações**: Procedimentos de operação e disaster recovery
+- **Requisitos**: Requisitos funcionais e não-funcionais
+
+## 📁 Estrutura do Repositório
 
 - `/docs` - Contém os arquivos da documentação publicada no GitHub Pages
 - `/assets` - Recursos como imagens, diagramas e arquivos de mídia usados na documentação
