@@ -363,3 +363,6 @@ MigrationBackup/
 FodyWeavers.xsd
 
 *-kubeconfig.yaml
+
+*.bkp
+*.drawio.dtmp
