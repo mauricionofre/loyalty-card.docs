@@ -1,11 +1,19 @@
-<!-- Script para Mermaid -->
+<!-- Arquivo requerido pelo tema Just-the-Docs -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" />
 <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
 <script>
-  document.addEventListener("DOMContentLoaded", function() {
+  document.addEventListener('DOMContentLoaded', function() {
     mermaid.initialize({
       startOnLoad: true,
       theme: 'dark',
-      themeCSS: '.node rect { fill: #0f3460; stroke: #7579e7; } .edgeLabel { background-color: #1a1a2e; color: #f1f1f1; } .edgePath .path { stroke: #7579e7; } .cluster rect { fill: #16213e; stroke: #7579e7; }',
+      themeVariables: {
+        primaryColor: '#0f3460',
+        primaryTextColor: '#f1f1f1',
+        primaryBorderColor: '#7579e7',
+        lineColor: '#7579e7',
+        secondaryColor: '#16213e',
+        tertiaryColor: '#1a1a2e'
+      },
       fontFamily: 'Roboto, sans-serif',
       flowchart: {
         curve: 'basis',
@@ -20,7 +28,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
 
-<!-- CSS personalizado para refinamentos -->
+<!-- CSS personalizado -->
 <style>
   :root {
     --body-background-color: #1a1a2e;
@@ -54,8 +62,17 @@
     letter-spacing: 0.5px;
   }
 
-  .site-nav {
+  .site-nav, .side-bar {
+    background-color: var(--sidebar-color) !important;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  }
+
+  .nav-list .nav-list-item .nav-list-link:hover {
+    background-color: rgba(115, 115, 240, 0.1);
+  }
+
+  .search-input {
+    border-radius: var(--border-radius);
   }
 
   .btn {
