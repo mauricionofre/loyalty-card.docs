@@ -1,0 +1,23 @@
+<div class="sidebar">
+  <div class="site-header" role="banner">
+    <a href="{{ '/' | absolute_url }}" class="site-title">{{ site.title }}</a>
+  </div>
+  <nav role="navigation" aria-label="Main navigation">
+    <ul class="nav-list">
+      {% for item in site.navigation %}
+        <li class="nav-list-item{% if page.url == item.link %} active{% endif %}">
+          <a href="{{ item.link | relative_url }}" class="nav-list-link">{{ item.name }}</a>
+          {% if item.children %}
+            <ul class="nav-list-child-list">
+              {% for child in item.children %}
+                <li class="nav-list-item">
+                  <a href="{{ child.link | relative_url }}" class="nav-list-link">{{ child.name }}</a>
+                </li>
+              {% endfor %}
+            </ul>
+          {% endif %}
+        </li>
+      {% endfor %}
+    </ul>
+  </nav>
+</div>

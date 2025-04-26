@@ -33,34 +33,64 @@ aux_links:
   "Loyalty Card no GitHub":
     - "//github.com/seu-usuario/loyalty-card"
 
-# Configurações de navegação
-nav:
-  - title: Home
-    url: /
-  - title: Arquitetura
-    url: /docs/architecture/
+# Navegação - alterado para formato compatível com Just-the-Docs
+# Estrutura correta para o menu de navegação
+nav_order:
+  home: 1
+  docs: 2
+
+# Definição da estrutura de navegação
+just_the_docs:
+  collections:
+    main:
+      name: Documentação principal
+
+# Organização da navegação (substitui 'nav')
+navigation:
+  - name: Home
+    link: /
+    nav_order: 1
+    
+  - name: Arquitetura
+    link: /docs/architecture/
+    nav_order: 2
     children:
-      - title: AR-001 Onboarding
-        url: /docs/architecture/ar-001-onboarding-de-clientes
-      - title: ADR-001 Decisões
-        url: /docs/architecture/adr/adr-001-decisoes-arquiteturais-processo-onboarding
-  - title: Diagramas
-    url: /docs/diagrams/
+      - name: AR-001 Onboarding
+        link: /docs/architecture/ar-001-onboarding-de-clientes.html
+        nav_order: 1
+      - name: ADR-001 Decisões
+        link: /docs/architecture/adr/adr-001-decisoes-arquiteturais-processo-onboarding.html
+        nav_order: 2
+        
+  - name: Diagramas
+    link: /docs/diagrams/
+    nav_order: 3
     children:
-      - title: Sequência de Onboarding
-        url: /docs/diagrams/sequence-onboarding
-      - title: Estado de Onboarding
-        url: /docs/diagrams/state-onboarding
-      - title: Arquitetura
-        url: /docs/diagrams/architecture-overview
-  - title: API
-    url: /docs/api/
-  - title: Domínio
-    url: /docs/domain/
-  - title: Operações
-    url: /docs/operations/
-  - title: Requisitos
-    url: /docs/requirements/
+      - name: Sequência de Onboarding
+        link: /docs/diagrams/sequence-onboarding.html
+        nav_order: 1
+      - name: Estado de Onboarding
+        link: /docs/diagrams/state-onboarding.html
+        nav_order: 2
+      - name: Arquitetura
+        link: /docs/diagrams/architecture-overview.html
+        nav_order: 3
+        
+  - name: API
+    link: /docs/api/
+    nav_order: 4
+    
+  - name: Domínio
+    link: /docs/domain/
+    nav_order: 5
+    
+  - name: Operações
+    link: /docs/operations/
+    nav_order: 6
+    
+  - name: Requisitos
+    link: /docs/requirements/
+    nav_order: 7
 
 # Configurações de callouts
 callouts:

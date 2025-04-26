@@ -26,41 +26,7 @@
 
     <div class="main-wrapper">
       <!-- Sidebar navigation com design moderno -->
-      <div class="sidebar">
-        <div class="sidebar-content">
-          {% if site.sidebar %}
-            <ul class="sidebar-nav">
-              {% for item in site.sidebar %}
-                <li class="sidebar-item {% if page.url == item.url %}active{% endif %}">
-                  <a href="{{ item.url | relative_url }}" class="sidebar-link">{{ item.title }}</a>
-                  {% if item.children %}
-                    <ul class="sidebar-subnav">
-                      {% for child in item.children %}
-                        <li class="sidebar-subitem {% if page.url == child.url %}active{% endif %}">
-                          <a href="{{ child.url | relative_url }}" class="sidebar-sublink">{{ child.title }}</a>
-                        </li>
-                      {% endfor %}
-                    </ul>
-                  {% endif %}
-                </li>
-              {% endfor %}
-            </ul>
-          {% endif %}
-
-          <!-- Links auxiliares -->
-          {% if site.aux_links %}
-          <div class="aux-nav">
-            <ul class="aux-nav-list">
-              {% for link in site.aux_links %}
-                <li class="aux-nav-item">
-                  <a href="{{ link[1] }}" class="aux-nav-link">{{ link[0] }}</a>
-                </li>
-              {% endfor %}
-            </ul>
-          </div>
-          {% endif %}
-        </div>
-      </div>
+      {% include sidebar.html %}
 
       <!-- Main content -->
       <main id="content" class="main-content" role="main">
@@ -81,27 +47,6 @@
             document.body.classList.toggle('sidebar-open');
           });
         }
-        
-        // Expandir submenus ativos
-        const activeSubitem = document.querySelector('.sidebar-subitem.active');
-        if (activeSubitem) {
-          const parentItem = activeSubitem.closest('.sidebar-item');
-          if (parentItem) {
-            parentItem.classList.add('expanded');
-          }
-        }
-        
-        // Toggle para submenus
-        const itemsWithChildren = document.querySelectorAll('.sidebar-item:has(.sidebar-subnav)');
-        itemsWithChildren.forEach(item => {
-          const link = item.querySelector('.sidebar-link');
-          link.addEventListener('click', function(e) {
-            if (link.getAttribute('href') === '#') {
-              e.preventDefault();
-              item.classList.toggle('expanded');
-            }
-          });
-        });
       });
     </script>
   </body>
