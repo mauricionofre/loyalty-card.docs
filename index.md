@@ -23,27 +23,27 @@ O Loyalty Card é uma plataforma SaaS multi-tenant para gestão de programas de 
 A documentação está organizada nas seguintes seções:
 
 <div class="docs-grid">
-  <a href="/docs/architecture/index.md" class="docs-card">
+  <a href="{{ '/docs/architecture/' | relative_url }}" class="docs-card">
     <h3>Arquitetura</h3>
     <p>Arquitetura de referência e decisões arquiteturais do sistema</p>
   </a>
-  <a href="/docs/diagrams/" class="docs-card">
+  <a href="{{ '/docs/diagrams/' | relative_url }}" class="docs-card">
     <h3>Diagramas</h3>
     <p>Diagramas de sequência, estado e arquitetura do sistema</p>
   </a>
-  <a href="/docs/api/" class="docs-card">
+  <a href="{{ '/docs/api/' | relative_url }}" class="docs-card">
     <h3>API</h3>
     <p>Documentação da API REST e endpoints disponíveis</p>
   </a>
-  <a href="/docs/domain/" class="docs-card">
+  <a href="{{ '/docs/domain/' | relative_url }}" class="docs-card">
     <h3>Modelo de Domínio</h3>
     <p>Entidades, agregados e regras de negócio</p>
   </a>
-  <a href="/docs/operations/" class="docs-card">
+  <a href="{{ '/docs/operations/' | relative_url }}" class="docs-card">
     <h3>Operações</h3>
     <p>Guias de operação, backup e disaster recovery</p>
   </a>
-  <a href="/docs/requirements/" class="docs-card">
+  <a href="{{ '/docs/requirements/' | relative_url }}" class="docs-card">
     <h3>Requisitos</h3>
     <p>Requisitos funcionais e não-funcionais</p>
   </a>
@@ -53,10 +53,10 @@ A documentação está organizada nas seguintes seções:
 
 Para começar a explorar o sistema, recomendamos seguir esta ordem:
 
-1. Entenda a [Arquitetura Geral](/docs/architecture/index.md)
-2. Explore o [Modelo de Domínio](/docs/domain/index.md)
-3. Consulte a [Documentação da API](/docs/api/index.md)
-4. Analise os [Diagramas do Sistema](/docs/diagrams/index.md)
+1. Entenda a [Arquitetura Geral]({{ '/docs/architecture/' | relative_url }})
+2. Explore o [Modelo de Domínio]({{ '/docs/domain/' | relative_url }})
+3. Consulte a [Documentação da API]({{ '/docs/api/' | relative_url }})
+4. Analise os [Diagramas do Sistema]({{ '/docs/diagrams/' | relative_url }})
 
 ## Status Atual
 
